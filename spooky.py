@@ -29,7 +29,7 @@ while turns > 0:
     if guess not in name:
         turns -= 1
         print('Wrong')
-        print('You have' + str(turns) + 'more guesses')
+        print('You have ' + str(turns) + ' more guesses')
     if turns == 0:
         print("You lose")
         print('The movie was: ', name)
