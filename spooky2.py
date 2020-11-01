@@ -1,5 +1,5 @@
 import curses
-from random
+import random
 
 curses.initscr()
 curses.noecho()
@@ -16,7 +16,7 @@ ESC = 27
 key = curses.KEY_RIGHT
 score = 0
 win.addch(food['0'],food[1],"0")
-while key ! = ESC:
+while key != ESC:
     win.addstr(0,2,'Score =' + str(score) + '  ')
     win.timeout(100)
 
@@ -55,7 +55,7 @@ while key ! = ESC:
         score+=1
         food = ()
         while food == ():
-            food = (randint(1,18), randint(1,58))
+            food = (random.randint(1,18), random.randint(1,58))
             if food in snake:
                 food = ()
         win.addch(food[0],food[1],'0')
