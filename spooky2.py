@@ -4,18 +4,18 @@ import random
 curses.initscr()
 curses.noecho()
 curses.curs_set(0)
-win = curses.newin(20,60,0,0)#(y,x)
+win = curses.newwin(20,60,0,0)#(y,x)
 win.keypad(1)
 win.border(0)
 win.nodelay(1)
 
-snake = [('4,10'),('4,9'),('4,8')]
+snake = [(4,10),(4,9),(4,8)]
 food = (10,20)
 
 ESC = 27
 key = curses.KEY_RIGHT
 score = 0
-win.addch(food['0'],food[1],"0")
+win.addch(food[0],food[1], 0)
 while key != ESC:
     win.addstr(0,2,'Score =' + str(score) + '  ')
     win.timeout(100)
@@ -48,7 +48,8 @@ while key != ESC:
     if y == 19: break
 
     #if the snake runs over itself
-    if snake[0] in snake[1:] : break
+    if snake[0] in snake[1:] :
+         break
 
     #check if snake has eaten the food
     if snake[0] == food:
@@ -63,7 +64,7 @@ while key != ESC:
         #moving 
         last = snake.pop()
         win.addch(last[0],last[1],'')
-    win.addch(snake[0][0,snake[0][1],'*'])
+    win.addch(snake[0][0,snake[0][1], '*'])
 
 
 curses.endwin()
