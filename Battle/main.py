@@ -6,22 +6,22 @@ from classes.inventory import Items
 
 
 # Create Black Magic
-fire = spell("Fire", 10, 100, "black")
-thunder = spell("Thunder", 10, 100, "black")
-blizzard = spell("Blzzard", 10, 100, "black")
-meteor = spell("Meteor", 20, 200, "black")
-quake = spell("Quake", 14, 140, "black")
+fire = spell("Fire", 25, 600, "black")
+thunder = spell("Thunder", 25, 600, "black")
+blizzard = spell("Blizzard", 25, 600, "black")
+meteor = spell("Meteor", 40, 1200, "black")
+quake = spell("Quake", 32, 140, "black")
 
 # Create White Magic
-cure = spell("Cure", 12, 120, "white")
-cura = spell("Cura", 10, 100, "white")
+cure = spell("Cure", 25, 620, "white")
+cura = spell("Cura", 32, 1500, "white")
 
 # Create some Items
 potion = Items("Potion", "potion", "Heals 50 HP", 50)
 hipotion = Items("Hi-Potion", "potion", "Heals 100 HP", 100)
-superpotion = Items("Super Portion", "potion", "Heals 500 HP", 500)
+superpotion = Items("Super Portion", "potion", "Heals 1000 HP", 1000)
 elixer = Items("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
-hielixer = Items("MegaElixer", "elixer", "Fully restores party's HP/MP", 9999 )
+hielixer = Items("MegaElixer", "elixer", "Fully restores party's HP/MP", 9999)
 
 grenade = Items("Grenade", "attack", "Deals 500 damage", 500)
 
@@ -32,11 +32,11 @@ player_items = [{"item": potion, "quantity": 15}, {"item": hipotion, "quantity":
                 {"item": hielixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
 # Instantiate People
-player1 = Person("Valos:", 3260, 65, 60, 34, player_spells, player_items)
-player2 = Person("Nick :", 4160, 65, 60, 34, player_spells, player_items)
-player3 = Person("Robot:", 3060, 65, 60, 34, player_spells, player_items)
+player1 = Person("Valos:", 1260, 65, 300, 34, player_spells, player_items)
+player2 = Person("Nick :", 2160, 65, 311, 34, player_spells, player_items)
+player3 = Person("Robot:", 1060, 65, 288, 34, player_spells, player_items)
 
-enemy = Person("Magus", 1200, 65, 45, 25, [], [])
+enemy = Person("Magus", 11200, 100, 525, 25, [], [])
 
 players = [player1, player2, player3]
 
@@ -119,7 +119,7 @@ while running:
     
     enemy_dmg = enemy.generate_damage()
     player1.take_damage(enemy_dmg)
-    print("Enemy attacks for", enemy_dmg)
+    print(bcolors.FAIL + bcolors.BOLD + "Enemy attacks for " + str(enemy_dmg) + bcolors.ENDC)
 
     print("==============================")
     print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" +str(enemy.get_max_hp()) + bcolors.ENDC + "\n")
@@ -128,6 +128,6 @@ while running:
     if enemy.get_hp() == 0:
         print(bcolors.OKGREEN + "You win!" + bcolors.ENDC)
         running = False
-    elif player.get_hp() == 0:
+    elif player.get_hp() == 0:# problem
         print( bcolors.FAIL + "Your enemy has defeated you!" + bcolors.ENDC )
         running = False
